@@ -1,0 +1,14 @@
+{
+  "name": "node-todo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "GK",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}

@@ -10,5 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.15.3"
+  },
+  "devDependencies": {
+    "mongoose": "^4.10.4",
+    "underscore": "^1.8.3"
   }
 }

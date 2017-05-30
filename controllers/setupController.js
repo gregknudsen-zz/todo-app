@@ -1,8 +1,8 @@
-const todos = require('../models/todoModel');
+const Todos = require('../models/todoModel');
 
 module.exports = function(app){
 
-  app.get('/api/setupTodos'), function(req, res){
+  app.get('/api/setupTodos', function(req, res){
 
     let starterTodos = [
       {
@@ -28,7 +28,6 @@ module.exports = function(app){
     Todos.create(starterTodos, function(err, results){
       res.send(results);
     });
-
-  }
+  });
 
 }

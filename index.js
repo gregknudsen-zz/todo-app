@@ -2,14 +2,14 @@ const express = require('express');
 const app = express();
 const config = require('./config');
 const mongoose = require('mongoose');
-const setupController = require('./controllers/setupController')
-
+const setupController = require('./controllers/setupController');
+const apiController = require('./controllers/apiController');
 
 const port = process.env.PORT || 3000;
 
 app.use('/assets', express.static(__dirname + '/public'));
 
-app.set('view engine', 'pug')
+app.set('view engine', 'pug');
 
 app.get('/', function(req, res){
   res.render('index')
@@ -17,6 +17,6 @@ app.get('/', function(req, res){
 
 mongoose.connect(config.getDbConnectionString());
 setupController(app);
-console.log(setupController);
+apiController(app);
 
 app.listen(port);

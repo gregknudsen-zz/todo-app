@@ -14,31 +14,43 @@ module.exports = function(app){
       if (err) throw err;
 
       res.send(todos);
-    })
+    });
   });
 
   app.get('api/todo/:id', function(req, res){
     Todos.findById({_id: req.params.id},
-      function(err, todos){
+      function(err, todo){
         if (err) throw err;
 
-        res.save(todo);
+        res.send(todo);
       });
   });
 
-  app.post('/api/todo/:id', function(req, res){
+  app.post('/api/todo', function(req, res){
     if(req.body.id){
-      Todos.findByIdandUpdate({
-        todo: req.body.todo,
-        isDone: req.body.isDone,
-        hasAttachment: req.body.hasAttachment
-      }, function(err, todo){
+      Todos.findByIdandUpdate(
+        req.body.id,
+        {
+          todo: req.body.todo,
+          isDone: req.body.isDone,
+          hasAttachment: req.body.hasAttachment
+        }, function(err, todo){
         throw err;
-        
-        ('Success');
+
+        res.send('Success');
       }
     );
-
-    }
-  })
-}
+  } else {
+        var newTodo = Todos({
+          username: "test",
+          todo: req.body.todo,
+          isDone: req.body.isDone,
+          hasAttachment: req.body.hasAttachment
+        });
+        newTodo.save(function(err){
+          if (err) throw err;
+          res.send('Success');
+        });
+      }
+    });
+  }

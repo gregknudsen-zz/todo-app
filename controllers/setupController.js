@@ -22,6 +22,12 @@ module.exports = function(app){
         todo: 'practice',
         isDone: false,
         hasAttachment: false
+      },
+      {
+        username: 'greg',
+        todo: 'learn Node',
+        isDone: false,
+        hasAttachment: false
       }
     ]
 
